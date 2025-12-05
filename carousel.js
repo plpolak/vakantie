@@ -103,6 +103,12 @@ function prev() { setActive(currentIndex - 1); }
 
 function toggleFullscreen() {
     document.body.classList.toggle("fullscreen-mode");
+    
+    // Force Safari to hide address bar in landscape
+    if (document.body.classList.contains("fullscreen-mode")) {
+        window.scrollTo(0, 1);
+        setTimeout(() => window.scrollTo(0, 0), 50);
+    }
 }
 
 function wireEvents() {
