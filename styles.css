@@ -137,3 +137,62 @@ h1 {
     padding: 32px;
     color: var(--muted);
 }
+
+.fullscreen-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    border: none;
+    background: rgba(15, 28, 47, 0.6);
+    color: #fff;
+    font-size: 18px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.fullscreen-btn:hover { background: rgba(15, 139, 255, 0.8); }
+.fullscreen-btn:active { transform: scale(0.98); }
+.fullscreen-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+/* Fullscreen mode */
+body.fullscreen-mode {
+    margin: 0;
+    padding: 0;
+    background: #000;
+}
+
+body.fullscreen-mode .shell {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+body.fullscreen-mode header {
+    display: none;
+}
+
+body.fullscreen-mode .carousel {
+    width: 100vw;
+    height: 100vh;
+    aspect-ratio: auto;
+    border-radius: 0;
+    margin: 0;
+    flex: 1;
+}
+
+body.fullscreen-mode .fullscreen-btn::after {
+    content: '⊡';
+}
+
+body.fullscreen-mode .fullscreen-btn {
+    background: rgba(255, 255, 255, 0.1);
+}

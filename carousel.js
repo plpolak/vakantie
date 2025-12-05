@@ -27,6 +27,7 @@ const slidesRoot = document.querySelector("[data-slides]");
 const dotsRoot = document.querySelector("[data-dots]");
 const prevBtn = document.querySelector("[data-prev]");
 const nextBtn = document.querySelector("[data-next]");
+const fullscreenBtn = document.querySelector("[data-fullscreen]");
 const emptyMessage = document.querySelector("[data-empty]");
 
 let currentIndex = 0;
@@ -94,13 +95,21 @@ function setActive(index) {
 function next() { setActive(currentIndex + 1); }
 function prev() { setActive(currentIndex - 1); }
 
+function toggleFullscreen() {
+    document.body.classList.toggle("fullscreen-mode");
+}
+
 function wireEvents() {
     nextBtn.addEventListener("click", next);
     prevBtn.addEventListener("click", prev);
+    fullscreenBtn.addEventListener("click", toggleFullscreen);
 
     document.addEventListener("keydown", (event) => {
         if (event.key === "ArrowRight") next();
         if (event.key === "ArrowLeft") prev();
+        if (event.key === "Escape" && document.body.classList.contains("fullscreen-mode")) {
+            toggleFullscreen();
+        }
     });
 
     // Basis swipe-ondersteuning voor touchscreens.
