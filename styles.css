@@ -78,6 +78,36 @@ h1 {
     pointer-events: auto;
 }
 
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide.is-active.swipe-next {
+    animation: slideInFromRight 400ms ease;
+}
+
+.slide.is-active.swipe-prev {
+    animation: slideInFromLeft 400ms ease;
+}
+
 .slide img {
     width: 100%;
     height: 100%;

@@ -36,6 +36,7 @@ let dots = [];
 let touchStartX = 0;
 let touchStartY = 0;
 let touchStartTime = 0;
+let lastSwipeDirection = null;
 const swipeThreshold = 40;
 const verticalLimit = 80;
 
@@ -84,11 +85,16 @@ function setActive(index) {
     const total = slides.length;
     currentIndex = (index + total) % total;
 
-    slides.forEach((slide) => slide.classList.remove("is-active"));
+    slides.forEach((slide) => slide.classList.remove("is-active", "swipe-next", "swipe-prev"));
     dots.forEach((dot) => dot.classList.remove("is-active"));
 
     loadImage(currentIndex);
-    slides[currentIndex].classList.add("is-active");
+    const newSlide = slides[currentIndex];
+    newSlide.classList.add("is-active");
+    if (lastSwipeDirection) {
+        newSlide.classList.add(lastSwipeDirection);
+        lastSwipeDirection = null;
+    }
     dots[currentIndex].classList.add("is-active");
 }
 
@@ -130,13 +136,21 @@ function wireEvents() {
         if (Math.abs(dx) < swipeThreshold) return;
         if (duration > 800) return;
 
-        if (dx < 0) next();
-        else prev();
+        // Prevent browser back/forward navigation
+        event.preventDefault();
+
+        if (dx < 0) {
+            lastSwipeDirection = "swipe-next";
+            next();
+        } else {
+            lastSwipeDirection = "swipe-prev";
+            prev();
+        }
     };
 
     if (carouselEl) {
         carouselEl.addEventListener("touchstart", onTouchStart, { passive: true });
-        carouselEl.addEventListener("touchend", onTouchEnd, { passive: true });
+        carouselEl.addEventListener("touchend", onTouchEnd, { passive: false });
     }
 
     dots.forEach((dot) => {
