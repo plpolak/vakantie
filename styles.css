@@ -109,9 +109,11 @@ h1 {
 }
 
 .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     display: block;
 }
 
@@ -176,7 +178,7 @@ h1 {
     height: 40px;
     border-radius: 6px;
     border: none;
-    background: rgba(15, 28, 47, 0.6);
+    background: rgba(15, 28, 47, 0.5);
     color: #fff;
     font-size: 18px;
     display: grid;
@@ -219,10 +221,26 @@ body.fullscreen-mode .carousel {
     flex: 1;
 }
 
+body.fullscreen-mode .slide {
+    background: #000;
+}
+
+body.fullscreen-mode .slide img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
 body.fullscreen-mode .fullscreen-btn::after {
     content: '⊡';
 }
 
 body.fullscreen-mode .fullscreen-btn {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(15, 28, 47, 0.5);
+}
+
+body.fullscreen-mode .fullscreen-btn:hover {
+    background: rgba(15, 139, 255, 0.8);
 }
