@@ -170,6 +170,25 @@ h1 {
     color: var(--muted);
 }
 
+.logo-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 5;
+}
+
+.topparken-logo {
+    width: 120px;
+    height: auto;
+    display: block;
+    opacity: 0.9;
+    transition: opacity 160ms ease;
+}
+
+.topparken-logo:hover {
+    opacity: 1;
+}
+
 .fullscreen-btn {
     position: absolute;
     bottom: 14px;
@@ -243,4 +262,8 @@ body.fullscreen-mode .fullscreen-btn {
 
 body.fullscreen-mode .fullscreen-btn:hover {
     background: rgba(15, 139, 255, 0.8);
+}
+
+body.fullscreen-mode .logo-container {
+    display: none;
 }
