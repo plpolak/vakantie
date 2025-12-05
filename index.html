@@ -1,6 +1,26 @@
-<html>
+<!doctype html>
+<html lang="nl">
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vakantie - Putterweg 70 122</title>
+	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+	<div class="shell">
+		<header>
+			<h1>Topparken Garderen, Putterweg 70, nr. 122</h1>
+			<p class="hint">Toets pijltjes of klik voor de volgende foto.</p>
+		</header>
+		<section class="carousel" aria-label="Vakantiefoto carrousel">
+			<div class="slides" data-slides></div>
+			<button class="nav prev" type="button" data-prev aria-label="Vorige foto">&#10094;</button>
+			<button class="nav next" type="button" data-next aria-label="Volgende foto">&#10095;</button>
+			<div class="dots" data-dots></div>
+		</section>
+		<div class="empty" data-empty hidden>Er zijn geen afbeeldingen gevonden in de map 'pictures'.</div>
+	</div>
+
+	<script src="carousel.js" defer></script>
 </body>
 </html>
