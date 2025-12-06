@@ -34,6 +34,8 @@ body {
 
 .shell {
     width: min(1200px, calc(100vw - 16px));
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -224,6 +226,26 @@ body::-webkit-scrollbar {
 .fullscreen-btn:active { transform: scale(0.98); }
 .fullscreen-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
+.enlarge-btn {
+    padding: 10px 16px;
+    margin: 8px 0 0 auto;
+    background: rgba(15, 28, 47, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 160ms ease, transform 160ms ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    align-self: flex-end;
+    margin-right: 8px;
+}
+
+.enlarge-btn:hover { background: rgba(15, 139, 255, 0.8); }
+.enlarge-btn:active { transform: scale(0.98); }
+.enlarge-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
 /* Fullscreen mode */
 body.fullscreen-mode {
     margin: 0;
@@ -280,6 +302,10 @@ body.fullscreen-mode .fullscreen-btn:hover {
 }
 
 body.fullscreen-mode .logo-container {
+    display: none;
+}
+
+body.fullscreen-mode .enlarge-btn {
     display: none;
 }
 

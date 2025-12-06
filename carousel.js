@@ -27,7 +27,7 @@ const slidesRoot = document.querySelector("[data-slides]");
 const dotsRoot = document.querySelector("[data-dots]");
 const prevBtn = document.querySelector("[data-prev]");
 const nextBtn = document.querySelector("[data-next]");
-const fullscreenBtn = document.querySelector("[data-fullscreen]");
+const fullscreenBtns = document.querySelectorAll("[data-fullscreen]");
 const emptyMessage = document.querySelector("[data-empty]");
 
 let currentIndex = 0;
@@ -132,7 +132,7 @@ function toggleFullscreen() {
 function wireEvents() {
     nextBtn.addEventListener("click", next);
     prevBtn.addEventListener("click", prev);
-    fullscreenBtn.addEventListener("click", toggleFullscreen);
+    fullscreenBtns.forEach(btn => btn.addEventListener("click", toggleFullscreen));
 
     document.addEventListener("keydown", (event) => {
         if (event.key === "ArrowRight") next();
