@@ -282,3 +282,34 @@ body.fullscreen-mode .fullscreen-btn:hover {
 body.fullscreen-mode .logo-container {
     display: none;
 }
+
+.features-table {
+    width: 100%;
+    max-width: calc(100% - 16px);
+    border-collapse: collapse;
+    margin: 16px auto 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.features-table tr {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.features-table td {
+    padding: 10px 12px;
+}
+
+.features-table td.label {
+    font-weight: bold;
+    color: #e67e22;
+    width: 45%;
+}
+
+.features-table td:not(.label) {
+    color: var(--fg);
+}
+
+body.fullscreen-mode .features-table {
+    display: none;
+}
