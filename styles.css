@@ -144,8 +144,8 @@ h1 {
 .nav:active { transform: translateY(-50%) scale(0.98); }
 .nav:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
-.nav.prev { left: 14px; }
-.nav.next { right: 14px; }
+.nav.prev { left: max(10px, env(safe-area-inset-left, 0px)); }
+.nav.next { right: max(10px, env(safe-area-inset-right, 0px)); }
 
 .dots {
     position: absolute;
