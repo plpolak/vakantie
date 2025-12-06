@@ -39,6 +39,7 @@ let touchStartTime = 0;
 let lastSwipeDirection = null;
 const swipeThreshold = 40;
 const verticalLimit = 80;
+let aspectSet = false;
 
 function buildSlides() {
     if (!imageFiles.length) {
@@ -78,6 +79,23 @@ function loadImage(index) {
     const img = slide.querySelector("img");
     if (!img.src) {
         img.src = img.dataset.src;
+        if (!img.complete) {
+            img.addEventListener("load", () => maybeSetAspect(img), { once: true });
+        }
+    }
+
+    // If cached load, natural sizes are available immediately
+    if (img.complete) {
+        maybeSetAspect(img);
+    }
+}
+
+function maybeSetAspect(img) {
+    if (aspectSet) return;
+    const { naturalWidth: w, naturalHeight: h } = img;
+    if (w && h) {
+        carouselEl.style.aspectRatio = `${w}/${h}`;
+        aspectSet = true;
     }
 }
 
