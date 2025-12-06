@@ -184,14 +184,15 @@ body::-webkit-scrollbar {
 }
 
 .logo-container {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 5;
+    position: relative;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    align-self: flex-end;
+    margin-right: 8px;
 }
 
 .topparken-logo {
-    width: 120px;
+    width: 100px;
     height: auto;
     display: block;
     opacity: 0.9;
