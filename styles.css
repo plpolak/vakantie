@@ -37,11 +37,13 @@ body {
 }
 
 header {
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 8px;
+    max-width: 75vw;
+    white-space: nowrap;
 }
 
 h1 {
