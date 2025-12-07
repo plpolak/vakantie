@@ -62,7 +62,7 @@ h1 {
     position: relative;
     background: #0b1020;
     border-radius: 18px;
-    overflow: hidden;
+    overflow: visible;
     width: calc(100% - 16px);
     margin: 0 auto;
     aspect-ratio: 16 / 9;
@@ -73,6 +73,8 @@ h1 {
     position: relative;
     width: 100%;
     height: 100%;
+    overflow: hidden;
+    border-radius: 18px;
 }
 
 .slide {
@@ -173,12 +175,13 @@ h1 {
 .dots {
     position: absolute;
     inset-inline: 0;
-    bottom: 14px;
+    bottom: 12px;
     display: flex;
     justify-content: center;
     gap: 8px;
     padding: 0 10px;
     pointer-events: none;
+    z-index: 10;
 }
 
 .dot {
@@ -289,13 +292,16 @@ body.fullscreen-mode {
     margin: 0;
     padding: 0;
     background: #000;
-}
-
-body.fullscreen-mode .shell {
     width: 100vw;
     width: 100dvw;
     height: 100vh;
     height: 100dvh;
+    overflow: hidden;
+}
+
+body.fullscreen-mode .shell {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -305,14 +311,26 @@ body.fullscreen-mode header {
 }
 
 body.fullscreen-mode .carousel {
-    width: 100vw;
-    width: 100dvw;
-    height: 100vh;
-    height: 100dvh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     aspect-ratio: auto;
     border-radius: 0;
     margin: 0;
-    flex: 1;
+    overflow: visible;
+    padding-bottom: 0;
+}
+
+body.fullscreen-mode .dots {
+    bottom: 12px;
+}
+
+body.fullscreen-mode .slides {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 body.fullscreen-mode .slide {

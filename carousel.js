@@ -134,6 +134,22 @@ function wireEvents() {
     prevBtn.addEventListener("click", prev);
     fullscreenBtns.forEach(btn => btn.addEventListener("click", toggleFullscreen));
 
+    // Close fullscreen when clicking outside the image (but inside carousel area)
+    if (carouselEl) {
+        carouselEl.addEventListener("click", (event) => {
+            // Only close if fullscreen is active
+            if (!document.body.classList.contains("fullscreen-mode")) return;
+            
+            // Don't close if clicking on buttons, images, or dots
+            if (event.target.closest("button") || event.target.tagName === "IMG" || event.target.classList.contains("dot")) {
+                return;
+            }
+            
+            // Close fullscreen if clicking on carousel background/margins
+            toggleFullscreen();
+        });
+    }
+
     document.addEventListener("keydown", (event) => {
         if (event.key === "ArrowRight") next();
         if (event.key === "ArrowLeft") prev();
