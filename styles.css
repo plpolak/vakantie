@@ -55,6 +55,7 @@ h1 {
     font-size: clamp(28px, 5vw, 42px);
     font-weight: 700;
     letter-spacing: -0.01em;
+    margin: 0 8px;
     color: #0f1c2f;
 }
 
@@ -353,6 +354,11 @@ body.fullscreen-mode .fullscreen-btn {
 body.fullscreen-mode .fullscreen-btn::after {
     content: '⊡';
     font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transform: translateY(-5px);
 }
 
 body.fullscreen-mode .fullscreen-btn:hover {
