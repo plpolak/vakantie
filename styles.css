@@ -327,12 +327,14 @@ body.fullscreen-mode .slide img {
     object-fit: contain;
 }
 
-body.fullscreen-mode .fullscreen-btn::after {
-    content: '⊡';
-}
-
 body.fullscreen-mode .fullscreen-btn {
     background: rgba(15, 28, 47, 0.5);
+    font-size: 0;
+}
+
+body.fullscreen-mode .fullscreen-btn::after {
+    content: '⊡';
+    font-size: 18px;
 }
 
 body.fullscreen-mode .fullscreen-btn:hover {
