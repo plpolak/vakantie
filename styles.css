@@ -13,7 +13,6 @@
 
 body {
     margin: 0;
-    min-height: 100vh;
     min-height: 100dvh;
     font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
     color: var(--fg);
@@ -33,7 +32,7 @@ body {
 }
 
 .shell {
-    width: min(1200px, calc(100vw - 16px));
+    width: min(1000px, calc(100vw - 16px));
     display: flex;
     flex-direction: column;
 }
@@ -51,7 +50,6 @@ header {
 }
 
 h1 {
-    margin: 0;
     font-size: clamp(28px, 5vw, 42px);
     font-weight: 700;
     letter-spacing: -0.01em;
@@ -261,7 +259,7 @@ h1 {
 
 .enlarge-btn {
     padding: 10px 16px;
-    margin: 8px 0 0 auto;
+    margin: 8px 8px 0 auto;
     background: rgba(15, 28, 47, 0.5);
     color: #fff;
     border: none;
@@ -272,7 +270,6 @@ h1 {
     transition: background 160ms ease, transform 160ms ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     align-self: flex-end;
-    margin-right: 8px;
 }
 
 .enlarge-btn:hover {
@@ -321,11 +318,6 @@ body.fullscreen-mode .carousel {
     border-radius: 0;
     margin: 0;
     overflow: visible;
-    padding-bottom: 0;
-}
-
-body.fullscreen-mode .dots {
-    bottom: 12px;
 }
 
 body.fullscreen-mode .slides {
