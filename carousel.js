@@ -30,6 +30,12 @@ const nextBtn = document.querySelector("[data-next]");
 const fullscreenBtns = document.querySelectorAll("[data-fullscreen]");
 const emptyMessage = document.querySelector("[data-empty]");
 
+// Older Safari (iOS 12) lacks CSS aspect-ratio support, so we compute a fallback height.
+const supportsAspectRatio = typeof CSS !== "undefined" &&
+    typeof CSS.supports === "function" &&
+    CSS.supports("aspect-ratio", "1 / 1");
+let fallbackRatio = 9 / 16; // height / width
+
 let currentIndex = 0;
 let slides = [];
 let dots = [];
@@ -40,6 +46,13 @@ let lastSwipeDirection = null;
 const swipeThreshold = 40;
 const verticalLimit = 80;
 let aspectSet = false;
+
+function updateFallbackHeight() {
+    if (supportsAspectRatio || !carouselEl) return;
+    const width = carouselEl.clientWidth || 1;
+    const height = Math.max(220, Math.round(width * fallbackRatio));
+    carouselEl.style.height = `${height}px`;
+}
 
 function buildSlides() {
     if (!imageFiles.length) {
@@ -91,12 +104,16 @@ function loadImage(index) {
 }
 
 function maybeSetAspect(img) {
-    if (aspectSet) return;
     const { naturalWidth: w, naturalHeight: h } = img;
-    if (w && h) {
+    if (!w || !h) return;
+
+    if (!aspectSet) {
         carouselEl.style.aspectRatio = `${w}/${h}`;
         aspectSet = true;
     }
+
+    fallbackRatio = h / w;
+    updateFallbackHeight();
 }
 
 function setActive(index) {
@@ -133,6 +150,8 @@ function wireEvents() {
     nextBtn.addEventListener("click", next);
     prevBtn.addEventListener("click", prev);
     fullscreenBtns.forEach(btn => btn.addEventListener("click", toggleFullscreen));
+
+    window.addEventListener("resize", updateFallbackHeight);
 
     // Close fullscreen when clicking outside the image (but inside carousel area)
     if (carouselEl) {
@@ -206,8 +225,10 @@ function wireEvents() {
 }
 
 buildSlides();
+updateFallbackHeight();
 
 if (imageFiles.length) {
     setActive(0);
     wireEvents();
+    updateFallbackHeight();
 }

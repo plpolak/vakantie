@@ -68,6 +68,15 @@ h1 {
     box-shadow: var(--shadow);
 }
 
+@supports not (aspect-ratio: 1 / 1) {
+    .carousel {
+        /* Fallback for iOS 12 Safari (no aspect-ratio support) */
+        height: 56vw;
+        max-height: 620px;
+        min-height: 220px;
+    }
+}
+
 .slides {
     position: relative;
     width: 100%;
