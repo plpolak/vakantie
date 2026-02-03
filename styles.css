@@ -407,6 +407,14 @@ body.fullscreen-mode .enlarge-btn {
     align-items: center;
 }
 
+h3 {
+    margin-top: 50px;
+}
+
+.specifications-table {
+    margin-top: 0;
+}
+
 .info-btn {
     padding: 6px 12px;
     background: rgba(15, 28, 47, 0.5);
